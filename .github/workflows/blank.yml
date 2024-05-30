@@ -1,0 +1,66 @@
+import java.util.Scanner;
+
+public class Main {
+    public static void main(String[] args) {
+        System.out.println("Let's play tic tac toe!");
+        String [][] grid = {{" ", " ", " "}, {" ", " ", " "}, {" ", " ", " "}};
+        printArray(grid);
+    for (int k = 0; k < 9; k++){
+        moveinput(grid, k);
+        printArray(grid);
+        ifwinner(grid);}
+
+        }
+       
+
+    public static void printArray(String[][] array) {
+        System.out.println("-------------");
+        for (int i = 0; i < 3; i++) {
+            System.out.print("| ");
+            for (int j = 0; j < 3; j++) {
+                System.out.print(array[i][j] + " | ");
+            }
+            System.out.println();
+            System.out.println("-------------");
+        }
+    }
+
+   public static void moveinput(String[][] array, int k) {
+       String movesign = "X"; 
+       String player = "Player 2";
+       if (k % 2 == 0){
+           movesign = "O";  
+           player = "Player 1";
+        }
+          Scanner moverow = new Scanner(System.in);
+     System.out.print(player + " enter move row: ");
+     String row = moverow.nextLine();
+    Scanner movecolumn = new Scanner(System.in);
+     System.out.print(player + " enter move column: ");
+    String column = movecolumn.nextLine();
+    int moverowint = Integer.parseInt(row)-1;
+    int movecolumnint = Integer.parseInt(column)-1;
+    array[moverowint][movecolumnint] = movesign; }
+
+    public static void ifwinner(String[][] array) {
+        for (int j = 0; j < 2; j++)
+            { if (array[0][j].equals(array[1][j]) && array[1][j].equals(array[2][j]) && !array[1][j].equals(" ")){
+                System.out.println("You win, game over!");
+                System.exit(0);
+                }}
+        for (int i = 0; i < 2; i++)
+            {if (array[i][0].equals(array[i][1]) && array[i][1].equals(array[i][2]) && !array[i][1].equals(" "))
+                {System.out.println("You win, game over!"); 
+                System.exit(0);; }}
+        if (array[0][0].equals(array[1][1]) && array[1][1].equals(array[2][2]) && !array[1][1].equals(" "))  {
+            System.out.println("You win, game over!");
+            System.exit(0);
+        }   
+           if (array[0][2].equals(array[1][1]) && array[1][1].equals(array[2][0]) && !array[1][1].equals(" "))  {
+               System.out.println("You win, game over!");
+               System.exit(0);
+           }  
+    }
+    }
+
+    
